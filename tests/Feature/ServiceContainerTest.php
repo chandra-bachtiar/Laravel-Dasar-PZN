@@ -20,7 +20,13 @@ class ServiceContainer extends TestCase
 
         self::assertEquals('Foo', $foo1->foo());
         self::assertEquals('Foo', $foo2->foo());
-        self::assertNotSame($foo1, $foo2);
+        
+        //before using service provider
+        // self::assertNotSame($foo1, $foo2);
+
+        // after using service provider
+        self::assertSame($foo1, $foo2);
+
     }
 
     public function testBinding()

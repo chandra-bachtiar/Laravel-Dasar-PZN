@@ -63,5 +63,9 @@ class RoutingTest extends TestCase
             ->assertSeeText("Name Chandra bachtiar");
     }
 
+    public function testRouterName() {
+        $this->get('produk/brg123')->assertSeeText("Link http://localhost/barang/brg123");
+        $this->get('kat/brg123')->assertSeeText("kategori/brg123");
+    }
     
 }

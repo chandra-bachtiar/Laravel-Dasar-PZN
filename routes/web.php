@@ -41,7 +41,7 @@ Route::get('/world-chand', function () {
 
 Route::get('/barang/{id}', function ($id) {
     return "Your ProductId is $id";
-});
+})->name('barang.detail');
 
 Route::get('/barang/{id}/merk/{merk}', function ($id, $merk) {
     return "Your ProductId $id Merk $merk";
@@ -49,7 +49,7 @@ Route::get('/barang/{id}/merk/{merk}', function ($id, $merk) {
 
 Route::get('/kategori/{id}', function ($id) {
     return "Kategori : $id";
-})->where('id','[a-z]+');
+})->where('id','[a-z]+')->name('kategori.detail');
 
 Route::get('/kategori/{id}/sub/{sub}', function ($id,$sub) {
     return "Kategori : $id Sub : $sub";
@@ -65,4 +65,13 @@ Route::get('/conflic/chand',function($name){
 
 Route::get('/conflic/{name}',function($name){
     return "Name $name";
+});
+
+Route::get('/produk/{id}',function($id){
+    $link = route('barang.detail',["id"=> $id]);
+    return "Link $link";
+});
+
+Route::get('kat/{id}',function($id){
+    return redirect()->route('kategori.detail',["id"=> $id]);
 });

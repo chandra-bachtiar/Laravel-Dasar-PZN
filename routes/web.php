@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Services\HelloService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,4 +79,9 @@ Route::get('kat/{id}',function($id){
 });
 
 Route::get('/controller/hello/{name}',[HelloController::class,'helo']);
+
 Route::get('/controller/hallo',[HelloController::class,'halo']);
+
+Route::get('/controller/hello-request',[HelloController::class,'request']);
+
+

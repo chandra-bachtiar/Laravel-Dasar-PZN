@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\InputController;
 use App\Services\HelloService;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,4 +86,14 @@ Route::get('/controller/hallo',[HelloController::class,'halo']);
 
 Route::get('/controller/hello-request',[HelloController::class,'request']);
 
+//input controller
+Route::get('/input/hello',[InputController::class,'hello']);
+
+Route::post('/input/hello',[InputController::class,'hello']);
+
+Route::post('/input/hello-first',[InputController::class,'helloFirst']);
+
+Route::post('/input/hello-input',[InputController::class,'helloInput']);
+
+Route::post('/input/hello-product',[InputController::class,'helloProduct']);
 

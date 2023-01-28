@@ -42,4 +42,23 @@ class InputController extends Controller
             "birth" => $birthDate->format("Y-m-d")
         ]);
     }
+
+    public function helloInputFilterOnly(Request $request)
+    {
+        $name = $request->only(["name.first", "name.last"]);
+        return json_encode($name);
+    }
+
+    public function helloInputFilterExcept(Request $request)
+    {
+        $name = $request->except("name.admin");
+        return json_encode($name);
+    }
+
+    public function helloInputMerge(Request $request)
+    {
+        $request->merge(['name.admin' => false]);
+        $name = $this->input();
+        return json_encode($name);
+    }
 }

@@ -100,3 +100,7 @@ Route::post('/input/hello-product',[InputController::class,'helloProduct']);
 //input type
 Route::post('/input/hello-type',[InputController::class,'helloInputType']);
 
+//input type filter
+Route::post("/input/filter-only",[InputController::class,'helloInputFilterOnly']);
+Route::post("/input/filter-except",[InputController::class,'helloInputFilterExcept']);
+Route::post('/input/merge',[InputController::class,'helloInputMerge']);

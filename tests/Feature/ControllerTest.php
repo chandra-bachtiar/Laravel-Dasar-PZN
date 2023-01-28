@@ -80,4 +80,47 @@ class ControllerTest extends TestCase
         ->assertSeeText("false")
         ->assertSeeText("2001-01-25");
     }
+
+    public function testInputFilter() {
+        //test only
+        $this->post("/input/filter-only",[
+            "name"=> [
+                "first" => "Chandra",
+                "last" => "Bachtiar",
+                "middle" => "Lintang"
+            ]
+        ])
+        ->assertSeeText("Chandra")
+        ->assertSeeText("Bachtiar")
+        ->assertDontSeeText("Lintang");
+
+        //test except
+        $this->post("/input/filter-except",[
+            "name"=> [
+                "first" => "Chandra",
+                "last" => "Bachtiar",
+                "middle" => "Lintang",
+                "admin"=> "true",
+            ]
+        ])
+        ->assertSeeText("Chandra")
+        ->assertSeeText("Bachtiar")
+        ->assertDontSeeText("admin");
+    }
+
+    public function testInputMerge() {
+        //test only
+        $this->post("/input/merge",[
+            "name"=> [
+                "first" => "Chandra",
+                "last" => "Bachtiar",
+                "middle" => "Lintang",
+                "admin"=> "true",
+            ]
+        ])
+        ->assertSeeText("Chandra")
+        ->assertSeeText("Bachtiar")
+        ->assertSeeText("admin")
+        ->assertSeeText("false");
+    }
 }

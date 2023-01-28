@@ -97,3 +97,6 @@ Route::post('/input/hello-input',[InputController::class,'helloInput']);
 
 Route::post('/input/hello-product',[InputController::class,'helloProduct']);
 
+//input type
+Route::post('/input/hello-type',[InputController::class,'helloInputType']);
+

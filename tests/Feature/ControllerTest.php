@@ -68,4 +68,16 @@ class ControllerTest extends TestCase
         ->assertSeeText("Permen Kiss")
         ->assertSeeText("Superpel");
     }
+
+    public function testInputType() {
+        $this->post('/input/hello-type',
+        [
+            "name"=>"chandra bachtiar",
+            "ismarried"=>"false",
+            "birth"=>"2001-01-25"
+        ])
+        ->assertSeeText("chandra bachtiar")
+        ->assertSeeText("false")
+        ->assertSeeText("2001-01-25");
+    }
 }

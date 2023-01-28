@@ -18,15 +18,28 @@ class InputController extends Controller
         return "First $first";
     }
 
-    public function helloInput(Request $request)
+    public function helloInput(Request $request): string
     {
         $input = $this->input();
         return json_encode($input);
     }
 
-    public function helloProduct(Request $request)
+    public function helloProduct(Request $request): string
     {
         $product = $this->input('product.*.name');
         return json_encode($product);
+    }
+
+    public function helloInputType(Request $request): string
+    {
+        $name = $request->input("name");
+        $isMarried = $request->boolean("ismarried");
+        $birthDate = $request->date("birth", 'Y-m-d');
+
+        return json_encode([
+            "name" => $name,
+            "isMarried" => $isMarried,
+            "birth" => $birthDate->format("Y-m-d")
+        ]);
     }
 }
